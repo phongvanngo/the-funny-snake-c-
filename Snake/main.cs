@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Snake : MonoBehaviour {
 	private Vector2Int gridPosition;
-	private float gridMoveTimer;
-	private float gridMoveTimerMax;
 	// Use this for initialization
 	void Start () {
 		
@@ -14,25 +12,11 @@ public class Snake : MonoBehaviour {
 	// Update is called once per frame
 	private void Awake () {
 		gridPosition = new Vector2Int (15, 15);
-	
 	}
 	private void Update() {
-		//moverment input
-		{
-			if (Input.GetKeyDown (KeyCode.UpArrow)) {
-				gridPosition.y += 10;
-			}
-			if (Input.GetKeyDown (KeyCode.DownArrow)) {
-				gridPosition.y -= 10;
-			}
-			if (Input.GetKeyDown (KeyCode.LeftArrow)) {
-				gridPosition.x -= 10;
-			}
-			if (Input.GetKeyDown (KeyCode.RightArrow)) {
-				gridPosition.x += 10;
-			}
+		if (Input.GetKeyDown (KeyCode.UpArrow)) {
+			gridPosition.y += 10;
 		}
-		
 		transform.position = new Vector3 (gridPosition.x, gridPosition.y);
 
 	}
