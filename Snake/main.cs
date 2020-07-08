@@ -18,6 +18,5 @@ public class Snake : MonoBehaviour {
 			gridPosition.y += 10;
 		}
 		transform.position = new Vector3 (gridPosition.x, gridPosition.y);
-
 	}
 }
