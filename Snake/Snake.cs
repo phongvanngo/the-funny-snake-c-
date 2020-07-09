@@ -1,3 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
 public class Snake : MonoBehaviour {
 	private Vector2Int gridMoveDirection;
 	private int gridValue = 10;
@@ -31,7 +35,7 @@ public class Snake : MonoBehaviour {
 				gridMoveDirection.x = -gridValue;
 				gridMoveDirection.y = 0;
 			}
-			if (Input.GetKeyDown (KeyCode.RightArrow)&& gridMoveDirection.y != -gridValue) {
+			if (Input.GetKeyDown (KeyCode.RightArrow)&& gridMoveDirection.x != -gridValue) {
 				gridMoveDirection.x = gridValue;
 				gridMoveDirection.y = 0;
 			}
@@ -44,15 +48,4 @@ public class Snake : MonoBehaviour {
 		transform.position = new Vector3 (gridPosition.x, gridPosition.y);
 
 	}
-
-
-
-
-
-
-
-
-
-
-	
 }
