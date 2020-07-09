@@ -23,17 +23,21 @@ public class Snake : MonoBehaviour {
 	private void Update() {
 		//moverment input
 		{
-			if (Input.GetKeyDown (KeyCode.UpArrow)) {
-				gridPosition.y += gridValue;
+			if (Input.GetKeyDown (KeyCode.UpArrow) && gridMoveDirection.y != -gridValue ) {
+				gridMoveDirection.x = 0;
+				gridMoveDirection.y = gridValue;
 			}
-			if (Input.GetKeyDown (KeyCode.DownArrow)) {
-				gridPosition.y -= gridValue;
+			if (Input.GetKeyDown (KeyCode.DownArrow) && gridMoveDirection.y != gridValue ) {
+				gridMoveDirection.x = 0;
+				gridMoveDirection.y = -gridValue;
 			}
-			if (Input.GetKeyDown (KeyCode.LeftArrow)) {
-				gridPosition.x -= gridValue;
+			if (Input.GetKeyDown (KeyCode.LeftArrow) && gridMoveDirection.x != gridValue) {
+				gridMoveDirection.x = -gridValue;
+				gridMoveDirection.y = 0;
 			}
-			if (Input.GetKeyDown (KeyCode.RightArrow)) {
-				gridPosition.x += gridValue;
+			if (Input.GetKeyDown (KeyCode.RightArrow)&& gridMoveDirection.x != -gridValue) {
+				gridMoveDirection.x = gridValue;
+				gridMoveDirection.y = 0;
 			}
 		}
 		gridMoveTimer += Time.deltaTime;
