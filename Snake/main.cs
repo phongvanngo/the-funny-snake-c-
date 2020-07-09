@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Snake : MonoBehaviour {
+	private Vector2Int gridMoveDirection;
+	private int gridValue = 10;
 	private Vector2Int gridPosition;
 	private float gridMoveTimer;
 	private float gridMoveTimerMax;
@@ -13,26 +15,32 @@ public class Snake : MonoBehaviour {
 	
 	// Update is called once per frame
 	private void Awake () {
-		gridPosition = new Vector2Int (15, 15);
-	
+		gridPosition = new Vector2Int (5, 5);
+		gridMoveTimerMax = 1f;
+		gridMoveTimer = gridMoveTimerMax;
+		gridMoveDirection = new Vector2Int (gridValue, 0);
 	}
 	private void Update() {
 		//moverment input
 		{
 			if (Input.GetKeyDown (KeyCode.UpArrow)) {
-				gridPosition.y += 10;
+				gridPosition.y += gridValue;
 			}
 			if (Input.GetKeyDown (KeyCode.DownArrow)) {
-				gridPosition.y -= 10;
+				gridPosition.y -= gridValue;
 			}
 			if (Input.GetKeyDown (KeyCode.LeftArrow)) {
-				gridPosition.x -= 10;
+				gridPosition.x -= gridValue;
 			}
 			if (Input.GetKeyDown (KeyCode.RightArrow)) {
-				gridPosition.x += 10;
+				gridPosition.x += gridValue;
 			}
 		}
-		
+		gridMoveTimer += Time.deltaTime;
+		if (gridMoveTimerMax <= gridMoveTimer) {
+			gridPosition += gridMoveDirection;
+			gridMoveTimer -= gridMoveTimerMax;
+		}
 		transform.position = new Vector3 (gridPosition.x, gridPosition.y);
 
 	}
