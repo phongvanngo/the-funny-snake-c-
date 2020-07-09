@@ -44,4 +44,15 @@ public class Snake : MonoBehaviour {
 		transform.position = new Vector3 (gridPosition.x, gridPosition.y);
 
 	}
+
+
+
+
+
+
+
+
+
+
+	
 }
